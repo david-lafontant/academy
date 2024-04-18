@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'pages/index'
   resources :grades
   resources :enrollements
   resources :contents

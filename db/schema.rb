@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_18_204508) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_18_204958) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "contents", force: :cascade do |t|
+    t.string "title"
+    t.string "type"
+    t.string "file_path"
+    t.bigint "lesson_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_contents_on_lesson_id"
+  end
 
   create_table "course_modules", force: :cascade do |t|
     t.string "title"
@@ -48,6 +58,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_18_204508) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "contents", "lessons"
   add_foreign_key "course_modules", "courses"
   add_foreign_key "courses", "users"
   add_foreign_key "lessons", "course_modules"

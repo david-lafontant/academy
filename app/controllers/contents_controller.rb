@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ContentsController < ApplicationController
-  before_action :set_content, only: %i[ show edit update destroy ]
+  before_action :set_content, only: %i[show edit update destroy]
 
   # GET /contents or /contents.json
   def index
@@ -7,8 +9,7 @@ class ContentsController < ApplicationController
   end
 
   # GET /contents/1 or /contents/1.json
-  def show
-  end
+  def show; end
 
   # GET /contents/new
   def new
@@ -16,8 +17,7 @@ class ContentsController < ApplicationController
   end
 
   # GET /contents/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /contents or /contents.json
   def create
@@ -25,7 +25,7 @@ class ContentsController < ApplicationController
 
     respond_to do |format|
       if @content.save
-        format.html { redirect_to content_url(@content), notice: "Content was successfully created." }
+        format.html { redirect_to content_url(@content), notice: 'Content was successfully created.' }
         format.json { render :show, status: :created, location: @content }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class ContentsController < ApplicationController
   def update
     respond_to do |format|
       if @content.update(content_params)
-        format.html { redirect_to content_url(@content), notice: "Content was successfully updated." }
+        format.html { redirect_to content_url(@content), notice: 'Content was successfully updated.' }
         format.json { render :show, status: :ok, location: @content }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +52,20 @@ class ContentsController < ApplicationController
     @content.destroy
 
     respond_to do |format|
-      format.html { redirect_to contents_url, notice: "Content was successfully destroyed." }
+      format.html { redirect_to contents_url, notice: 'Content was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_content
-      @content = Content.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def content_params
-      params.require(:content).permit(:title, :type, :file_path, :lesson_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_content
+    @content = Content.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def content_params
+    params.require(:content).permit(:title, :type, :file_path, :lesson_id)
+  end
 end

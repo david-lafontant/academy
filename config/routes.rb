@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'publics/home'
+  devise_for :users
+  root 'publics#home'
+  get 'pages/index'
   get 'publics/about'
   get 'publics/programme'
   get 'publics/contact'
-  devise_for :users
-  root 'pages#index'
   resources :grades
   resources :enrollements
   resources :contents

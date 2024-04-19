@@ -18,7 +18,7 @@ Grade.destroy_all
 
 # role: 0 = student, 1=instructor, 2=administrator
 User.create!(name: 'administrator', email: 'admin@example.com', password: 'pasword12345',
-             confirmed_at: DateTime.now, role: 3)
+             confirmed_at: DateTime.now, role: 2)
 
 10.times do
   User.create!(name: Faker::Name.unique.name, email: Faker::Internet.unique.email, password: 'pasword12345',

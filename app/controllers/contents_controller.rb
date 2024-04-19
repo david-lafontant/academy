@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ContentsController < ApplicationController
+  before_action :authenticate_user!
+  load_and_authorize_resource
   before_action :set_content, only: %i[show edit update destroy]
 
   # GET /contents or /contents.json
@@ -22,7 +24,7 @@ class ContentsController < ApplicationController
   # POST /contents or /contents.json
   def create
     @content = Content.new(content_params)
-
+    authorize! :create, @content
     respond_to do |format|
       if @content.save
         format.html { redirect_to content_url(@content), notice: 'Content was successfully created.' }
@@ -36,6 +38,7 @@ class ContentsController < ApplicationController
 
   # PATCH/PUT /contents/1 or /contents/1.json
   def update
+    authorize! :update, @content
     respond_to do |format|
       if @content.update(content_params)
         format.html { redirect_to content_url(@content), notice: 'Content was successfully updated.' }
@@ -49,6 +52,7 @@ class ContentsController < ApplicationController
 
   # DELETE /contents/1 or /contents/1.json
   def destroy
+    authorize! :destroy, @content
     @content.destroy
 
     respond_to do |format|

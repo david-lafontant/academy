@@ -17,22 +17,25 @@ Enrollement.destroy_all
 Grade.destroy_all
 
 # role: 0 = student, 1=instructor, 2=administrator
+User.create!(name: 'administrator', email: 'admin@example.com', password: 'pasword12345',
+             confirmed_at: DateTime.now, role: 3)
 
 10.times do
-  User.create!(name: Faker::Name.unique.name, role: rand(0..2))
+  User.create!(name: Faker::Name.unique.name, email: Faker::Internet.unique.email, password: 'pasword12345',
+               confirmed_at: DateTime.now, role: rand(0..2))
 end
 
 # users = User.all
 
 students = User.where(role: 0).to_a
-studentsNbr = students.length - 1
+student_nbr = students.length - 1
 
 instructors = User.where(role: 1).to_a
-instructorsNbr = instructors.length - 1
+instructor_nbr = instructors.length - 1
 
 10.times do
   Course.create!(title: Faker::Educator.unique.course_name, description: Faker::Lorem.paragraph(sentence_count: 2),
-                 user: instructors[rand(0..instructorsNbr)])
+                 user: instructors[rand(0..instructor_nbr)])
   # aker::Science.science
 end
 courses = Course.all
@@ -56,9 +59,9 @@ lessons = Lesson.all
 end
 
 20.times do
-  Enrollement.create(user: students[rand(0..studentsNbr)], course: courses[rand(0..9)])
+  Enrollement.create(user: students[rand(0..student_nbr)], course: courses[rand(0..9)])
 end
 
 20.times do
-  Grade.create(user: students[rand(0..studentsNbr)], course: courses[rand(0..9)], grade: rand(0..100))
+  Grade.create(user: students[rand(0..student_nbr)], course: courses[rand(0..9)], grade: rand(0..100))
 end

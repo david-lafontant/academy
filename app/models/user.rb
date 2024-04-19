@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :courses
   has_many :enrollements
   has_many :grades
+
   enum role: %i[student instructor admin]
 
   after_initialize :set_default_role, if: :new_record?

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class LessonsController < ApplicationController
+  before_action :authenticate_user!
+  load_and_authorize_resource
   before_action :set_lesson, only: %i[show edit update destroy]
 
   # GET /lessons or /lessons.json
@@ -22,7 +24,7 @@ class LessonsController < ApplicationController
   # POST /lessons or /lessons.json
   def create
     @lesson = Lesson.new(lesson_params)
-
+    authorize! :create, @lesson
     respond_to do |format|
       if @lesson.save
         format.html { redirect_to lesson_url(@lesson), notice: 'Lesson was successfully created.' }
@@ -36,6 +38,7 @@ class LessonsController < ApplicationController
 
   # PATCH/PUT /lessons/1 or /lessons/1.json
   def update
+    authorize! :update, @lesson
     respond_to do |format|
       if @lesson.update(lesson_params)
         format.html { redirect_to lesson_url(@lesson), notice: 'Lesson was successfully updated.' }
@@ -49,6 +52,7 @@ class LessonsController < ApplicationController
 
   # DELETE /lessons/1 or /lessons/1.json
   def destroy
+    authorize! :destroy, @lesson
     @lesson.destroy
 
     respond_to do |format|

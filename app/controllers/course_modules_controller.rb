@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CourseModulesController < ApplicationController
+  before_action :authenticate_user!
+  load_and_authorize_resource
   before_action :set_course_module, only: %i[show edit update destroy]
 
   # GET /course_modules or /course_modules.json
@@ -22,7 +24,7 @@ class CourseModulesController < ApplicationController
   # POST /course_modules or /course_modules.json
   def create
     @course_module = CourseModule.new(course_module_params)
-
+    authorize! :create, @course_module
     respond_to do |format|
       if @course_module.save
         format.html { redirect_to course_module_url(@course_module), notice: 'Course module was successfully created.' }
@@ -36,6 +38,7 @@ class CourseModulesController < ApplicationController
 
   # PATCH/PUT /course_modules/1 or /course_modules/1.json
   def update
+    authorize! :update, @course_module
     respond_to do |format|
       if @course_module.update(course_module_params)
         format.html { redirect_to course_module_url(@course_module), notice: 'Course module was successfully updated.' }
@@ -49,6 +52,7 @@ class CourseModulesController < ApplicationController
 
   # DELETE /course_modules/1 or /course_modules/1.json
   def destroy
+    authorize! :destroy, @course_module
     @course_module.destroy
 
     respond_to do |format|

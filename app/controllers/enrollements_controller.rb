@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class EnrollementsController < ApplicationController
+  before_action :authenticate_user!
+  load_and_authorize_resource
   before_action :set_enrollement, only: %i[show edit update destroy]
 
   # GET /enrollements or /enrollements.json
@@ -22,7 +24,7 @@ class EnrollementsController < ApplicationController
   # POST /enrollements or /enrollements.json
   def create
     @enrollement = Enrollement.new(enrollement_params)
-
+    authorize! :create, @enrollement
     respond_to do |format|
       if @enrollement.save
         format.html { redirect_to enrollement_url(@enrollement), notice: 'Enrollement was successfully created.' }
@@ -36,6 +38,7 @@ class EnrollementsController < ApplicationController
 
   # PATCH/PUT /enrollements/1 or /enrollements/1.json
   def update
+    authorize! :update, @enrollement
     respond_to do |format|
       if @enrollement.update(enrollement_params)
         format.html { redirect_to enrollement_url(@enrollement), notice: 'Enrollement was successfully updated.' }
@@ -49,6 +52,7 @@ class EnrollementsController < ApplicationController
 
   # DELETE /enrollements/1 or /enrollements/1.json
   def destroy
+    authorize! :destroy, @enrollement
     @enrollement.destroy
 
     respond_to do |format|

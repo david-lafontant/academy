@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class GradesController < ApplicationController
+  before_action :authenticate_user!
+  load_and_authorize_resource
   before_action :set_grade, only: %i[show edit update destroy]
 
   # GET /grades or /grades.json
@@ -22,7 +24,7 @@ class GradesController < ApplicationController
   # POST /grades or /grades.json
   def create
     @grade = Grade.new(grade_params)
-
+    authorize! :create, @Grade
     respond_to do |format|
       if @grade.save
         format.html { redirect_to grade_url(@grade), notice: 'Grade was successfully created.' }
@@ -36,6 +38,7 @@ class GradesController < ApplicationController
 
   # PATCH/PUT /grades/1 or /grades/1.json
   def update
+    authorize! :update, @grade
     respond_to do |format|
       if @grade.update(grade_params)
         format.html { redirect_to grade_url(@grade), notice: 'Grade was successfully updated.' }
@@ -49,6 +52,7 @@ class GradesController < ApplicationController
 
   # DELETE /grades/1 or /grades/1.json
   def destroy
+    authorize! :destroy, @grade
     @grade.destroy
 
     respond_to do |format|

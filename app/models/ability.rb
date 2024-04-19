@@ -51,7 +51,7 @@ class Ability
     cannot :update, Content if user.instructor?
     cannot :destroy, Content if user.instructor?
 
-    can :manage, :all if user.has_role? :admin
+    can :manage, :all if user.admin?
     # Define abilities for the user here. For example:
     #
     #   return unless user.present?

@@ -5,6 +5,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.2.2'
 
+gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.8', '>= 7.0.8.1'
 
@@ -75,3 +77,8 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
 end
+
+gem 'cancancan', '~> 3.5'
+gem 'devise', '~> 4.9', '>= 4.9.3'
+gem 'devise_invitable', '~> 1.5', '>= 1.5.5'
+gem 'rubocop'

@@ -2,7 +2,11 @@
 
 Rails.application.routes.draw do
   devise_for :users
-  root 'pages#index'
+  root 'publics#home'
+  get 'pages/index'
+  get 'publics/about'
+  get 'publics/programme'
+  get 'publics/contact'
   resources :grades
   resources :enrollements
   resources :contents

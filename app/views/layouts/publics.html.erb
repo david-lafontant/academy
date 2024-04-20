@@ -11,19 +11,8 @@
   </head>
 
   <body>
-    <%= render "shared/flash" %>
-    <div class="container-fluid">
-   <div class="row">
-   <div class="col-4">
-    <%= render 'shared/pages_sidebar'%>
-    </div>
-    <div class="col-8">
+  <%= render 'shared/public_header'%>
     <%= yield %>
-    </div>
-    </div>
-    <div class="row">
-      <%= render 'shared/footer'%>
-    </div>
-    </div>
+  <%= render 'shared/footer'%>
   </body>
 </html>

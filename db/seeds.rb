@@ -17,8 +17,14 @@ Enrollement.destroy_all
 Grade.destroy_all
 
 # role: 0 = student, 1=instructor, 2=administrator
-User.create!(name: 'administrator', email: 'admin@example.com', password: 'pasword12345',
+User.create!(name: 'administrator', email: 'admin@example.com', password: 'password12345',
              confirmed_at: DateTime.now, role: 2)
+
+User.create!(name: 'profe', email: 'profe@example.com', password: 'password12345',
+             confirmed_at: DateTime.now, role: 1)
+
+User.create!(name: 'discipula', email: 'discipula@example.com', password: 'password12345',
+             confirmed_at: DateTime.now, role: 0)
 
 10.times do
   User.create!(name: Faker::Name.unique.name, email: Faker::Internet.unique.email, password: 'pasword12345',

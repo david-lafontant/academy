@@ -1,24 +1,78 @@
-# README
+# ACADEMY
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ACADEMY is an online training school. It allow student to attend training in various field.
 
-Things you may want to cover:
+<h2 style="color: red;">Application under construction</h2>
 
-* Ruby version
+## Technical requirements
 
-* System dependencies
+### Ruby version
 
-* Configuration
+ruby-3.2.2
 
-* Database creation
+### System dependencies
 
-* Database initialization
+* Node.js
+* Yarn
+* PostgreSQL
+* Rails 7
+* Git
 
-* How to run the test suite
+### To use on your local machine
 
-* Services (job queues, cache servers, search engines, etc.)
+1. Clone
 
-* Deployment instructions
+```git
 
-* ...
+git clone https://github.com/david-lafontant/academy.git
+```
+
+2. Open the cloned repository with you favorite IDE
+
+3. Open the cloned repository in your terminal and type
+
+```bash
+yarn add
+```
+
+then
+
+```ruby
+ bundle install
+ ```
+
+then proced to the database setup
+4. Database creation
+
+```ruby
+rails db:create
+rails db:migrate
+rails db:seed
+```
+
+5. then launch the application
+
+```bash
+bin/dev
+```
+
+and enjoy :)
+
+## Already done
+
+* setup the database
+* Authetication
+* Athorization
+* Create the views
+
+## Next steps
+
+* Add static contents and styling for the views
+* Remove minitest and build the tests with rspec
+* Create API endpoints for the resources
+* Add admin capability
+* Add CMS
+* Deployment
+* Refactoring as follow up of posting for comments on social networks
+
+<h2 style="color: green; font-size: 3rem;"><span style="font-weight: bold; font-style: italic;">S</span>tay tuned<span style=" font-weight: bold; font-style: italic;">!</span></h2>

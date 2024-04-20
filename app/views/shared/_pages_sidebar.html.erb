@@ -1,62 +1,42 @@
-<div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
-
-      <%= link_to root_path, class: "d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none" do %>
-          <i class="bi bi-house"></i>
-          <span class="nav_name">Acceuil</span> 
+<div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;"><%= link_to root_path, class: "d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none" do %> <i class="bi bi-house"></i>
+  <span class="nav_name">Acceuil</span><% end %>
+  <hr>
+  <ul class="nav nav-pills flex-column mb-auto">
+    <li class="nav-item">
+      <%= link_to courses_path, class: "nav-link" do %> 
+      <i class="bi bi-house"></i>
+      <span class="nav_name">Cours </span>
       <% end %>
-    <hr>
-    <ul class="nav nav-pills flex-column mb-auto">
-      <li class="nav-item">
-
-
-        <%= link_to courses_path, class: "nav-link active" do %>
-          <i class="bi bi-house"></i>
-          <span class="nav_name">Cours </span> 
-      <% end %>
-      </li>
-      <li>
-
-
-                <%= link_to course_modules_path, class: "nav-link active" do %>
-          <i class="bi bi-house"></i>
-          <span class="nav_name">Modules</span> 
-      <% end %>
-      </li>
-      <li>
-
-
-        <%= link_to contents_path, class: "nav-link active" do %>
-          <i class="bi bi-house"></i>
-          <span class="nav_name">Contents </span> 
-      <% end %>
-      </li>
-      <li>
-
-
-        <%= link_to lessons_path, class: "nav-link active" do %>
-          <i class="bi bi-house"></i>
-          <span class="nav_name">Matiere </span> 
-      <% end %>
-      </li>
-      <li>
-
-
-        <%= link_to enrollements_path, class: "nav-link active" do %>
-          <i class="bi bi-house"></i>
-          <span class="nav_name">Inscriptions</span> 
-      <% end %>
-
-
-      </li>
-
-      <li>
-        <%= link_to grades_path, class: "nav-link active" do %>
-          <i class="bi bi-house"></i>
-          <span class="nav_name">Notes</span> 
-      <% end %>
-
-      </li>
-    </ul>
- 
-
-  </div>
+    </li>
+    <li class="nav-item">
+      <%= link_to course_modules_path, class: "nav-link" do %> 
+      <i class="bi bi-house"></i>
+      <span class="nav_name">Modules</span><% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to contents_path, class: "nav-link" do %> 
+      <i class="bi bi-house"></i>
+      <span class="nav_name">Contents </span><% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to lessons_path, class: "nav-link" do %> 
+      <i class="bi bi-house"></i>
+      <span class="nav_name">Matiere </span><% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to enrollements_path, class: "nav-link" do %> 
+      <i class="bi bi-house"></i>
+      <span class="nav_name">Inscriptions</span><% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to grades_path, class: "nav-link" do %> 
+      <i class="bi bi-house"></i>
+      <span class="nav_name">Notes</span><% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to  destroy_user_session_path, data: {turbo_method: :delete}, :class=> "nav_link" do %> 
+      <i class="bi bi-box-arrow-right"></i>
+      <span class="nav_name">Sortir</span><% end %>
+    </li>
+  </ul>
+</div>

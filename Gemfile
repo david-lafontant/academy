@@ -80,5 +80,5 @@ end
 
 gem 'cancancan', '~> 3.5'
 gem 'devise', '~> 4.9', '>= 4.9.3'
-gem 'devise_invitable', '~> 1.5', '>= 1.5.5'
+gem 'devise_invitable', '~> 2.0.0'
 gem 'rubocop'
